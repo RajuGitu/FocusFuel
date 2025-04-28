@@ -5,27 +5,43 @@ const nodemailer = require("nodemailer");
 const loginUserController = async (req, res) => {
     try {
         const { email, password } = req.body;
+
         if (!email || !password) {
-            return res.status(401).send({ message: "Please fill all detail" });
+            return res.status(401).json({ message: "Please fill all details" });
         }
-        const user = await userModel.findOne({ email, password });
+
+        const user = await userModel.findOne({ email });
+        
         if (!user) {
-            return res.status(404).send({ message: "Incorrect Password or Username" });
+            return res.status(404).json({ message: "Invalid email or password" });
         }
-        //token
-        const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET, {
-            expiresIn: '7d',
+
+        const isPasswordValid = user.password === password; 
+        
+        if (!isPasswordValid) {
+            return res.status(404).json({ message: "Invalid email or password" });
+        }
+
+        const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false, 
+            sameSite: "strict",
+            maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
-        return res.status(200).send({
-            message: "User is login",
-            userName: user.userName,
+        res.status(200).json({
+            message: "Login successful",
+            userId: user._id,
             token
         });
     } catch (error) {
-        return res.status(500).send({ message: "Server side Problem" });
+        console.error("Login Error:", error); 
+        res.status(500).json({ message: "Server error", error: error.message });
     }
-}
+};
+
 const signupUserController = async (req, res) => {
     try {
         const { userName, password, email, phone, address, securityAnswer } = req.body;

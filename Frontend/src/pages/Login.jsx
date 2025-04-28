@@ -19,13 +19,14 @@ const Login = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",  // This is crucial for receiving cookies
                 body: JSON.stringify({ email, password }),
             });
 
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("userId", data.userId);
                 navigate("/dashboard");
             } else {
                 setError("Invalid email or password");
@@ -60,7 +61,7 @@ const Login = () => {
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Password</label>
                         <input
-                            type="password"
+                            type="text"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
