@@ -1,10 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgetPassword";
 import VerifyOtp from "./pages/VerifyOtp";
 import Dashboard from "./pages/Dashboard";
 import Study from "./pages/Study";
+import FocusFuel from "./pages/FocusFuel";
 
 const App = () => {
   return (
@@ -14,8 +15,11 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
-        <Route path="/Dashboard" element={<Dashboard/>} />
-        <Route path="/Study" element={<Study/>} />
+        <Route path="/FocusFuel" element={<FocusFuel />}>
+          <Route index element={<Navigate to="dashboard" />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="study" element={<Study />} />
+        </Route>
       </Routes>
     </Router>
   );
