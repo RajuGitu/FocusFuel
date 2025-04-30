@@ -1,7 +1,7 @@
 import React from 'react'
-import TodaysOverview from '../Components/common/Dashboard/TodaysOverview';
-import FocusSessions from '../Components/common/Dashboard/FocusSessions';
-import StudyInsights from '../Components/common/Dashboard/StudyInsights';
+import TodaysOverview from '../Components/Dashboard/TodaysOverview';
+import FocusSessions from '../Components/Dashboard/FocusSessions';
+import StudyInsights from '../Components/Dashboard/StudyInsights';
 
 function Dashboard() {
   return (
