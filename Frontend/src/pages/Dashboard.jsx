@@ -1,16 +1,25 @@
 import React from 'react'
-import Navbar from '../Components/common/Nav'
+import TodaysOverview from '../Components/common/Dashboard/TodaysOverview';
+import FocusSessions from '../Components/common/Dashboard/FocusSessions';
+import StudyInsights from '../Components/common/Dashboard/StudyInsights';
 
 function Dashboard() {
   return (
     <div className="bg-[#F9F8FB]">
-      <div className="ml-[64px] mr-[64px] pt-[24px] pb-[24px] pr-[32px] pl-[32px]">
-      <div className="flex flex-col items-center justify-center h-screen bg-background">
-        <h1 className="text-2xl font-bold text-black">Dashboard</h1>
-        <p className="mt-4 text-lg text-gray-300">Welcome to your dashboard!</p>
-      </div>
+      <div className="ml-[64px] mr-[64px] pt-[24px] pb-[24px] pr-[32px] pl-[32px] ">
+      
+        <div className="flex flex-col gap-2 animate-fade-in mb-8 ">
+          <h1 className='md:text-4xl font-extrabold'>Welcome to <span className='md:text-4xl font-extrabold font-display text-2xl font-sans text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500'>FocusFuel</span></h1>
+          <p className='text-gray-500 text-lg max-w-xl'>Track your productivity, mood, and enter flow state more easily with scientifically-backed techniques.</p>
+        </div>
+
+        <TodaysOverview/>
+        <FocusSessions/>
+        <StudyInsights/>
+        
       </div>
     </div>
+
   )
 }
 
