@@ -4,10 +4,10 @@ import Nav from "../Components/common/Nav";
 const FocusFuel = () => {
     return (
         <>
-        <div>
-            <Nav/>
-            <Outlet/>
-        </div>
+            <div>
+                <Nav />
+                <Outlet />
+            </div>
         </>
     )
 }
