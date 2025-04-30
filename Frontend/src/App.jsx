@@ -6,6 +6,11 @@ import VerifyOtp from "./pages/VerifyOtp";
 import Dashboard from "./pages/Dashboard";
 import Study from "./pages/Study";
 import FocusFuel from "./pages/FocusFuel";
+import Mood from "./pages/Mood";
+import Analytics from "./pages/Analytics";
+import Planner from "./pages/Planner";
+import Wellness from "./pages/Wellness";
+import AiAssistant from "./pages/AiAssistant";
 
 const App = () => {
   return (
@@ -19,6 +24,11 @@ const App = () => {
           <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="study" element={<Study />} />
+          <Route path="mood" element={<Mood />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="planner" element={<Planner />} />
+          <Route path="wellness" element={<Wellness />} />
+          <Route path="aiassistant" element={<AiAssistant />} />
         </Route>
       </Routes>
     </Router>

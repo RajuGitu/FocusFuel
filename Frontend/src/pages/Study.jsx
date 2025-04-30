@@ -1,4 +1,8 @@
 import Grid from "../Components/Study/Grid";
+import Music from "../Components/Study/Music";
+import Statics from "../Components/Study/Statics";
+import Tasks from "../Components/Study/Tasks";
+import Timer from "../Components/Study/Timer";
 
 const Study = () => {
     return (
@@ -16,10 +20,13 @@ const Study = () => {
                         {/* Left part */}
                         <div className="w-[70%] box-border">
                             <Grid />
+                            <Timer />
+                            <Tasks />
                         </div>
                         {/* Right part */}
-                        <div className="w-[30%] box-border">
-                            alaolndlk
+                        <div className="w-[30%] box-border space-y-6">
+                            <Music />
+                            <Statics />
                         </div>
                     </div>
 

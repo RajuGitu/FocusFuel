@@ -53,11 +53,11 @@ function Nav() {
             <NavLink
               to="/FocusFuel/study"
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded-[var(--radius)] px-3 py-2 transition-colors duration-200 ease-in-out 
+                `flex items-center gap-2 rounded-xl px-3 py-2 transition-colors duration-200 ease-in-out 
                 ${
                   isActive
-                    ? "bg-[rgb(113_81_211)] text-white"
-                    : "text-gray-600 hover:text-[rgb(113_81_211)] hover:bg-[rgb(113_81_211)/0.1]"
+                  ? "bg-[#7151d31a] text-[rgb(113_81_211)] font-medium"
+                  : "text-gray-600 hover:text-[#7151d3] hover:bg-[#7151d31a]"
                 }`
               }
             >
@@ -67,11 +67,11 @@ function Nav() {
             <NavLink
               to="/FocusFuel/mood"
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded-[var(--radius)] px-3 py-2 transition-colors duration-200 ease-in-out 
+                `flex items-center gap-2 rounded-xl px-3 py-2 transition-colors duration-200 ease-in-out 
                 ${
                   isActive
-                    ? "bg-[rgb(113_81_211)] text-white"
-                    : "text-gray-600 hover:text-[rgb(113_81_211)] hover:bg-[rgb(113_81_211)/0.1]"
+                  ? "bg-[#7151d31a] text-[rgb(113_81_211)] font-medium"
+                  : "text-gray-600 hover:text-[#7151d3] hover:bg-[#7151d31a]"
                 }`
               }
             >
@@ -81,11 +81,11 @@ function Nav() {
             <NavLink
               to="/FocusFuel/analytics"
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded-[var(--radius)] px-3 py-2 transition-colors duration-200 ease-in-out 
+                `flex items-center gap-2 rounded-xl px-3 py-2 transition-colors duration-200 ease-in-out 
                 ${
                   isActive
-                    ? "bg-[rgb(113_81_211)] text-white"
-                    : "text-gray-600 hover:text-[rgb(113_81_211)] hover:bg-[rgb(113_81_211)/0.1]"
+                  ? "bg-[#7151d31a] text-[rgb(113_81_211)] font-medium"
+                  : "text-gray-600 hover:text-[#7151d3] hover:bg-[#7151d31a]"
                 }`
               }
             >
@@ -95,11 +95,11 @@ function Nav() {
             <NavLink
               to="/FocusFuel/planner"
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded-[var(--radius)] px-3 py-2 transition-colors duration-200 ease-in-out 
+                `flex items-center gap-2 rounded-xl px-3 py-2 transition-colors duration-200 ease-in-out 
                 ${
                   isActive
-                    ? "bg-[rgb(113_81_211)] text-white"
-                    : "text-gray-600 hover:text-[rgb(113_81_211)] hover:bg-[rgb(113_81_211)/0.1]"
+                  ? "bg-[#7151d31a] text-[rgb(113_81_211)] font-medium"
+                  : "text-gray-600 hover:text-[#7151d3] hover:bg-[#7151d31a]"
                 }`
               }
             >
@@ -109,11 +109,11 @@ function Nav() {
             <NavLink
               to="/FocusFuel/wellness"
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded-[var(--radius)] px-3 py-2 transition-colors duration-200 ease-in-out 
+                `flex items-center gap-2 rounded-xl px-3 py-2 transition-colors duration-200 ease-in-out 
                 ${
                   isActive
-                    ? "bg-[rgb(113_81_211)] text-white"
-                    : "text-gray-600 hover:text-[rgb(113_81_211)] hover:bg-[rgb(113_81_211)/0.1]"
+                  ? "bg-[#7151d31a] text-[rgb(113_81_211)] font-medium"
+                  : "text-gray-600 hover:text-[#7151d3] hover:bg-[#7151d31a]"
                 }`
               }
             >
@@ -123,11 +123,11 @@ function Nav() {
             <NavLink
               to="/FocusFuel/aiassistant"
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded-[var(--radius)] px-3 py-2 transition-colors duration-200 ease-in-out 
+                `flex items-center gap-2 rounded-xl px-3 py-2 transition-colors duration-200 ease-in-out 
                 ${
                   isActive
-                    ? "bg-[rgb(113_81_211)] text-white"
-                    : "text-gray-600 hover:text-[rgb(113_81_211)] hover:bg-[rgb(113_81_211)/0.1]"
+                  ? "bg-[#7151d31a] text-[rgb(113_81_211)] font-medium"
+                  : "text-gray-600 hover:text-[#7151d3] hover:bg-[#7151d31a]"
                 }`
               }
             >
