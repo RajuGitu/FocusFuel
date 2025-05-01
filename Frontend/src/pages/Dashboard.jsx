@@ -2,6 +2,9 @@ import React from 'react'
 import TodaysOverview from '../Components/Dashboard/TodaysOverview';
 import FocusSessions from '../Components/Dashboard/FocusSessions';
 import StudyInsights from '../Components/Dashboard/StudyInsights';
+import MoodInsights from '../Components/Dashboard/MoodInsights';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar } from '@fortawesome/free-solid-svg-icons';
 
 function Dashboard() {
   return (
@@ -15,7 +18,19 @@ function Dashboard() {
 
         <TodaysOverview/>
         <FocusSessions/>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <StudyInsights/>
+        <div className="md:col-span-1">
+              <h2 className="flex items-center gap-2 mb-4 text-xl font-bold">
+                <FontAwesomeIcon
+                  icon={faChartBar}
+                  className="text-purple-600 w-4 h-4"
+                />
+                Mood Tracker
+              </h2>
+              <MoodInsights/>
+        </div>
+        </div>
         
       </div>
     </div>
