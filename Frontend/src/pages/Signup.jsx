@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSignUp } from "../hooks/authHooks";
 
 const SignUp = () => {
     const [userName, setUserName] = useState("");
@@ -8,25 +9,12 @@ const SignUp = () => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [securityAnswer, setSecurityAnswer] = useState("");
-    const [message, setMessage] = useState("");
-    const navigate = useNavigate();
+
+    const { handleSignUp, message } = useSignUp();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const response = await fetch("http://localhost:5000/basic/signup", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userName, password, email, phone, address, securityAnswer })
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            setMessage("Signup successful! OTP sent to email.");
-            navigate("/verify-otp", { state: { userId: data.userId } });
-        } else {
-            setMessage("Error signing up. Please try again.");
-        }
+        await handleSignUp({ userName, password, email, phone, address, securityAnswer });
     };
 
     return (
@@ -34,11 +22,10 @@ const SignUp = () => {
             <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg">
                 <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Sign Up</h2>
 
-                {message && (
-                    <p className="text-sm text-center mb-4 text-red-600">{message}</p>
-                )}
+                {message && <p className="text-sm text-center mb-4 text-red-600">{message}</p>}
 
                 <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* Username */}
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Username:</label>
                         <input
@@ -50,6 +37,7 @@ const SignUp = () => {
                         />
                     </div>
 
+                    {/* Email */}
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Email:</label>
                         <input
@@ -61,6 +49,7 @@ const SignUp = () => {
                         />
                     </div>
 
+                    {/* Password */}
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Password:</label>
                         <input
@@ -72,6 +61,7 @@ const SignUp = () => {
                         />
                     </div>
 
+                    {/* Phone */}
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Phone:</label>
                         <input
@@ -83,6 +73,7 @@ const SignUp = () => {
                         />
                     </div>
 
+                    {/* Address */}
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Address:</label>
                         <input
@@ -94,6 +85,7 @@ const SignUp = () => {
                         />
                     </div>
 
+                    {/* Security Answer */}
                     <div className="flex flex-col">
                         <label className="mb-1 text-sm font-medium text-gray-700">Security Answer:</label>
                         <input

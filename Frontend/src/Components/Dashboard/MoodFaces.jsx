@@ -30,23 +30,20 @@ const Moodfaces = () => {
             <div
               key={label}
               className={`flex flex-col items-center ${color} rounded-lg p-3 transition-all cursor-pointer
-                ${
-                  selectedMood === label
-                    ? "ring-2 ring-blue-500 scale-110"
-                    : "hover:scale-105"
+                ${selectedMood === label
+                  ? "ring-2 ring-blue-500 scale-110"
+                  : "hover:scale-105"
                 }`}
               onClick={() => handleSelect(label)}
             >
               <Icon
-                className={`h-7 w-7 mb-1 ${
-                  selectedMood === label ? "text-blue-600" : "text-gray-900"
-                }`}
+                className={`h-7 w-7 mb-1 ${selectedMood === label ? "text-blue-600" : "text-gray-900"
+                  }`}
                 strokeWidth={2.5}
               />
               <span
-                className={`text-sm font-semibold ${
-                  selectedMood === label ? "text-blue-600" : "text-gray-900"
-                }`}
+                className={`text-sm font-semibold ${selectedMood === label ? "text-blue-600" : "text-gray-900"
+                  }`}
               >
                 {label}
               </span>

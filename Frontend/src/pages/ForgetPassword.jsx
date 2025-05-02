@@ -1,32 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useForgotPassword } from "../hooks/authHooks";
 
 const ForgotPassword = () => {
-    const [email, setEmail] = useState("");
-    const [answer, setAnswer] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [message, setMessage] = useState("");
-    const navigate = useNavigate();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const response = await fetch("http://localhost:5000/basic/forgotpassword", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, answer, newPassword }),
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-            setMessage(data.message);
-            setTimeout(() => navigate("/"), 2000);
-        } else {
-            setMessage(data.message || "Error submitting form");
-        }
-    };
+    const {
+        email,
+        setEmail,
+        answer,
+        setAnswer,
+        newPassword,
+        setNewPassword,
+        message,
+        handleSubmit
+    } = useForgotPassword();
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">

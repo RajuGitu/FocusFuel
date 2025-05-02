@@ -1,17 +1,28 @@
 import { useState, useEffect, useRef } from "react";
+import { useTimerCart } from "../../context/TimerCartContext";
 
 const Timer = () => {
+    const { timer, breakTimer } = useTimerCart();
     const [mode, setMode] = useState("focus"); // 'focus' or 'break'
-    const [timeLeft, setTimeLeft] = useState(25 * 60);
+    const [timeLeft, setTimeLeft] = useState(25 * 60); // Default to 25 minutes
     const [isRunning, setIsRunning] = useState(false);
     const intervalRef = useRef(null);
 
-    const focusTime = 25 * 60;
-    const breakTime = 5 * 60;
+    // Ensure timer and breakTimer are valid numbers
+    const focusTime = (Number(timer) || 25) * 60; // Default to 25 minutes
+    const breakTime = (Number(breakTimer) || 5) * 60; // Default to 5 minutes
+    useEffect(() => {
+        if (timer) {
+            const seconds = Number(timer) * 60; // Ensure timer is a valid number
+            setMode("focus");
+            setTimeLeft(seconds);
+            setIsRunning(true);
+        }
+    }, [timer]);
 
     useEffect(() => {
         setTimeLeft(mode === "focus" ? focusTime : breakTime);
-    }, [mode]);
+    }, [mode, focusTime, breakTime]);
 
     useEffect(() => {
         if (isRunning) {

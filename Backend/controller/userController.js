@@ -11,13 +11,13 @@ const loginUserController = async (req, res) => {
         }
 
         const user = await userModel.findOne({ email });
-        
+
         if (!user) {
             return res.status(404).json({ message: "Invalid email or password" });
         }
 
-        const isPasswordValid = user.password === password; 
-        
+        const isPasswordValid = user.password === password;
+
         if (!isPasswordValid) {
             return res.status(404).json({ message: "Invalid email or password" });
         }
@@ -26,7 +26,7 @@ const loginUserController = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false, 
+            secure: false,
             sameSite: "strict",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
@@ -37,7 +37,7 @@ const loginUserController = async (req, res) => {
             token
         });
     } catch (error) {
-        console.error("Login Error:", error); 
+        console.error("Login Error:", error);
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
@@ -138,7 +138,12 @@ const verifyOtp = async (req, res) => {
 
         // Generate token
         const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
-
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "strict",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
         res.status(200).send({
             message: "OTP verified successfully! User saved.",
             token,
@@ -225,7 +230,29 @@ const forgotPasswordController = async (req, res) => {
     }
 };
 
+const getUserNameController = async (req, res) => {
+    try {
+        // Extract user ID from the token payload
+        const userId = req.user.id; 
+
+        // Fetch user details from the database
+        const user = await userModel.findById(userId); // Replace with your DB query
+
+        // Check if user exists
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Send username in response
+        res.status(200).json({ success: true, userName: user.userName }); // Assuming your DB has 'username' field
+    } catch (error) {
+        console.error('Error fetching username:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+};
+
 module.exports = {
+    getUserNameController,
     loginUserController,
     signupUserController,
     updateUserController,
